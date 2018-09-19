@@ -1,6 +1,6 @@
 package com.example.ibrahim.serverdatahandlingapp
 
-import android.os.AsyncTask.execute
+import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var line: String
         var data = ""
-        execute {
+        AsyncTask.execute {
             val url = URL("https://jsonplaceholder.typicode.com/todos/1")
             val httpURLConnection = url.openConnection() as HttpURLConnection
             val sBuilder = StringBuilder()
@@ -32,16 +32,16 @@ class MainActivity : AppCompatActivity() {
                 val inputStream = BufferedInputStream(httpURLConnection.inputStream)
                 val reader = BufferedReader(InputStreamReader(inputStream))
 
-            /*    reader.forEachLine {
+                reader.forEachLine {
                     line = reader.readLine()
                     data += line
 
                     sBuilder.append(line + "\n")
-                }*/
-                reader.readLine().forEach {
+                }
+                /*reader.readLine().forEach {
                     line=reader.readLine()
                     sBuilder.append(line +"\n")
-                }
+                }*/
 
                 Log.i(tag, sBuilder.toString())
                 val jsonObject = JSONObject(data)
