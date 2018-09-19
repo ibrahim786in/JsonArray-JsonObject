@@ -15,53 +15,31 @@ class NewJsonTask : AppCompatActivity() {
         val jsonString = "{\n" +
                 "\t\"name\": \"Mirza\",\n" +
                 "\t\"groups\": [{\n" +
-                "\t\t\t\"name\": \"CP\",\n" +
-                "\t\t\t\"type\": \"What's App\"\n" +
-                "\t\t},\n" +
-                "\t\t{\n" +
-                "\t\t\t\"name\": \"UK\",\n" +
-                "\t\t\t\"type\": \"Insta\"\n" +
-                "\t\t}\n" +
-                "\t]\n" +
-                "}"
+                "\t\"name\": \"CP\",\n" +
+                "\t\"type\": \"What's App\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\"name\": \"UK\",\n" +
+                "\t\"type\": \"Insta\"\n" +
+                "\t}\n" +
+                "\t]\n}"
+
         val jsonObj1 = JSONObject(jsonString)
-//        Log.i("NewJSon",jsonObj1.toString())
-        val name = jsonObj1.getString("name")
-//        val number = jsonObj1.getString("number")
-        nameFromJson.text = name.toString()
-//        numberFromJson.text = number.toString()
+        val name1 = jsonObj1.getString("name")
+
+        nameFromJson.text = name1.toString()
 
         val jsonArray = jsonObj1.getJSONArray("groups")
         var string = ""
         for (i in 0 until jsonArray.length()) {
-            jsonArray.length()
+
             val jsonObject2 = jsonArray.getJSONObject(i)
-            val name = jsonObject2.getString("name")
+            val name2 = jsonObject2.getString("name")
             val type = jsonObject2.getString("type")
-            string += "name:$name\ntype:$type\n\n"
+            string += "name:$name2\ntype:$type\n\n"
             Log.i("NewJSon", string)
             newJsonArray.text = string
         }
-
-
-    }
-
-
-
-    private fun getStrig() {
-        "Mirzaahmedbaig".forEach {
-            var string = ""
-            string += it.toString()
-            Log.d("NewJSon", string)
-        }
-        //
-    }
-
-}
-fun main(args:Array<String>){
-    "Mirzaahmedbaig".forEach {
-        var string = ""
-        string += it.toString()
-        System.out.print("\n\n"+string)
     }
 }
+

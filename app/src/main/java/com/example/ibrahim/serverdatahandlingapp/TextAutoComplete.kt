@@ -11,11 +11,20 @@ class TextAutoComplete : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_auto_complete)
 
-//        val values=resources.getStringArray(R.array.countries)
         val values=resources.getStringArray(R.array.countries)
+
+//        For Dynamic adding the list in Text AutoComplete
+        /* val values= mutableListOf<String>()
+        values.add("India")
+        values.add("Indonesia")
+        values.add("Saudi Arabia")
+        values.add("Iceland")
+       */
+
         val adapter=ArrayAdapter<String>(this@TextAutoComplete,
                 R.layout.textviewdesign,values)
         autoComplTV.setAdapter(adapter)
         autoComplTV.threshold=1
+
     }
 }

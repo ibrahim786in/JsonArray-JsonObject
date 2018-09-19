@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/userID" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -52,7 +52,7 @@
         android:textColor="@android:color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/title1" />
 
 
 </android.support.constraint.ConstraintLayout>

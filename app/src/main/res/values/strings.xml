@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ServerDataHandlingApp</string>
-    <string name="text_auto_complete_list_is_here">Text Auto Complete List is Here</string>
+    <string name="text_auto_complete_list_is_here">AutoComplete TextView is Here</string>
+    <string name="countries_name">Countries Name</string>
 
     <string-array name="countries">
         <item>Australia</item>
