@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
     Shafiq
     Mirza */
 
-    for (i in list.indices) println("\n${list[i]}")
+//    for (i in list.indices) println("\n${list[i]}")
     //Same Output As Above
 
     list.forEach { _ ->
@@ -23,7 +23,11 @@ fun main(args: Array<String>) {
         int++
     }
 
-    while (int < list.size) {
+    val a=(0..9)
+    a.forEach {
+        println(a)
+    }
+   /* while (int < list.size) {
         println(list[int])
         int++
     }
@@ -35,5 +39,6 @@ fun main(args: Array<String>) {
 
     if (!list.isEmpty()) {
         println(list)
-    }
+    }*/
+
 }

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ibrahim.serverdatahandlingapp">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -20,11 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".TextAutoComplete" />
-        <activity android:name=".NewJsonTask"/>
-        <activity android:name=".SimpleListViewExample">
+        <activity android:name=".NewJsonTask">
 
         </activity>
-        <activity android:name=".CustomListViewExample"/>
     </application>
 
 </manifest>

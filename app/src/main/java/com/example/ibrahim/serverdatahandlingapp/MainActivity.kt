@@ -13,47 +13,47 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 
-
-
 class MainActivity : AppCompatActivity() {
     private val tag = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var line: String
-        var data = ""
+
         AsyncTask.execute {
+
+            var data = ""
+            var line: String?
             val url = URL("https://jsonplaceholder.typicode.com/todos/1")
             val httpURLConnection = url.openConnection() as HttpURLConnection
-            val sBuilder = StringBuilder()
 
             try {
                 httpURLConnection.requestMethod = "GET"
                 val inputStream = BufferedInputStream(httpURLConnection.inputStream)
                 val reader = BufferedReader(InputStreamReader(inputStream))
 
-                reader.forEachLine {
-                    line = reader.readLine()
+                line = reader.readLine()
+                while (line != null) {
                     data += line
+                    line = reader.readLine()
 
-                    sBuilder.append(line + "\n")
+                    Log.i(tag, data)
+                    val jsonObject = JSONObject(data)
+//                val jsonObj2 = jsonObject.getJSONObject(data)
+
+                    val objUserId = jsonObject.getString("userId")
+                    val objId1 = jsonObject.getString("id")
+                    val objTitle1 = jsonObject.getString("title")
+                    val objComp = jsonObject.getString("completed")
+
+                    userID.text = "User ID: $objUserId"
+                    id1.text = "ID: $objId1"
+                    title1.text = "Title :$objTitle1"
+                    completeOrNot.text = "Process Completed or Not $objComp"
                 }
-                /*reader.readLine().forEach {
-                    line=reader.readLine()
-                    sBuilder.append(line +"\n")
-                }*/
-
-                Log.i(tag, sBuilder.toString())
-                val jsonObject = JSONObject(data)
-                userID.text = jsonObject.getString("userId")
-                title1.text = jsonObject.getString("title")
-
-
             } catch (e: Exception) {
                 e.printStackTrace()
-            } finally {
-                httpURLConnection.disconnect()
             }
         }
     }
 }
+
