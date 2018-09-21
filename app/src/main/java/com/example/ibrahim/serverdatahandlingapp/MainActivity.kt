@@ -21,39 +21,46 @@ class MainActivity : AppCompatActivity() {
 
         AsyncTask.execute {
 
-            var data = ""
-            var line: String?
             val url = URL("https://jsonplaceholder.typicode.com/todos/1")
             val httpURLConnection = url.openConnection() as HttpURLConnection
 
+            var objUserId=""
+            var objId1=""
+            var objTitle1=""
+            var objComp=""
             try {
                 httpURLConnection.requestMethod = "GET"
                 val inputStream = BufferedInputStream(httpURLConnection.inputStream)
                 val reader = BufferedReader(InputStreamReader(inputStream))
 
+                var data = ""
+                var line: String?
                 line = reader.readLine()
                 while (line != null) {
                     data += line
                     line = reader.readLine()
-
+                }
                     Log.i(tag, data)
                     val jsonObject = JSONObject(data)
-//                val jsonObj2 = jsonObject.getJSONObject(data)
 
-                    val objUserId = jsonObject.getString("userId")
-                    val objId1 = jsonObject.getString("id")
-                    val objTitle1 = jsonObject.getString("title")
-                    val objComp = jsonObject.getString("completed")
+                  objUserId = jsonObject.getString("userId")
+                  objId1 = jsonObject.getString("id")
+                  objTitle1 = jsonObject.getString("title")
+                  objComp = jsonObject.getString("completed")
 
-                    userID.text = "User ID: $objUserId"
-                    id1.text = "ID: $objId1"
-                    title1.text = "Title :$objTitle1"
-                    completeOrNot.text = "Process Completed or Not $objComp"
-                }
+
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+            runOnUiThread {
+                userID.text = "User ID: $objUserId"
+                id1.text = "ID: $objId1"
+                title1.text = "Title :$objTitle1"
+                completeOrNot.text = "Process Completed or Not $objComp"
+            }
         }
+
     }
 }
 
